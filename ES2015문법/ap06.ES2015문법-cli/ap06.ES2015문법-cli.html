@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
     <title>ES6</title>
-</head>
-<body>
+  </head>
+  <body>
 
     <div style="margin: 40px 0 0 30px;">
-        <a href="#" onClick="window.open('../ap01.docs/npm사용법.html','npm사용법','width=800,height=400,toolbar=no,menubar=no,scrollbars=no,resizable=yes');return false;" rel="nofollow">npm 사용법</a>
+      <a href="#"
+        onClick="window.open('../ap01.docs/npm사용법.html','npm사용법','width=800,height=400,toolbar=no,menubar=no,scrollbars=no,resizable=yes');return false;"
+        rel="nofollow">npm 사용법</a>
     </div>
     <xmp>
 
@@ -24,7 +27,7 @@
         $ npx -v                           #  npx(=npm extension) 버전 확인
         8.18.0
 
-        $ npm install -g npm@latest        #  npm 최신 버전 설치
+        $ npm install -g npm@latest        #  npm 최신 버전 설치 (업데이트됨) (-g = 전역으로 설치하라는 의미)
 
 
       ##################################
@@ -59,6 +62,7 @@
       $ ls
 
 
+      # node용 프로젝트 생성
       $ npm init    # package.json 파일 생성 됨.
 
       This utility will walk you through creating a package.json file.
@@ -123,7 +127,7 @@
 
       ##################################
       # node 프로젝트에 babel 라이브러리 설치
-      # babel 은 자바스크립트 버전 컴파일다.
+      # babel 은 자바스크립트 버전 컴파일러다.
       # ES2015  ===> ES5, JSX ===> ES5
       ##################################
       https://babeljs.io/docs/en/babel-preset-env-standalone
@@ -172,6 +176,7 @@
       # node 프로젝트에 src 작업 디렉토리 만들기
       ##################################
 
+      # -p = 부모 폴더가 없으면 부모 폴더도 만들라는 의미의 옵션
       $ mkdir -p  ./src/
 
       # 상위 디렉토리의 src 디렉토리를 현재 디렉토리로 복사하기.
@@ -197,7 +202,8 @@
       ##################################
       # ap06-01.js 실행하기
       # 디버깅시 자주 사용되는 단축키
-      #   F5, F8:
+      #   F5:
+      #   F8:
       #   F10:
       #   F11:
       ##################################
@@ -261,7 +267,7 @@
 
       ##################################
       # src 폴더에 있는 js 파일을 es5로 컴파일하여
-      # build 폴더에 추가하시오.
+      # 컴파일된 결과물이 build 폴더에 파일로 추가되도록 하시오.
       ##################################
 
       # package.json 파일이 있는지 확인.
@@ -270,7 +276,7 @@
 
       # package.json 파일이 있는 곳에서 수행.
       # -d : destination 의 약자.
-      $ npx babel src/ -d build/
+      $ npx babel src/ -d build/                          # -d = destination
       Successfully compiled 24 files with Babel (2114ms)
 
 
@@ -415,5 +421,5 @@
 
     </xmp>
 
-</body>
+  </body>
 </html>
