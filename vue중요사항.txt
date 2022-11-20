@@ -1,9 +1,18 @@
 https://www.npmjs.com/
 
+Vue 프로젝트 만드는 방법
+  1. node 설치 (1번만!)
+  2. @vue/cli 설치 (위치 무관) (1번만!)
+     $ npm install --global @vue/cli
+  3. vue 프로젝트 생성 (프로젝트 만들 때마다 해줘야 함.)
+     $ npx vue create 프로젝트명
+  4. node 모듈 재설치 (node_modules 폴더가 생성됨.) (node_modules가 있는 경우에만 서버 실행이 되기 때문에 다른 사람의 프로젝트를 받았을 경우 재설치하면 됨.)
+     $ npm install
+
 vue 단축키: (인스턴스 만들 떄)
-- vueplugin
-- vuei
-- vuefc
+- vueplugin : .html 파일 상에서 사용
+- vuei      : .html 파일 상에서 사용
+- vuefc     : .vue 파일에서 사용
 
 디버깅시 자주 사용되는 단축키
 - debugger
