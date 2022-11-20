@@ -24,3 +24,11 @@ builder의 목적: 컴파일
 함수를 묶어서 처리하는 기술: 함수형 프로그래밍 (map, reduce, filter)
 
 메서드의 매개변수 확인 방법: ctrl + shift + space bar
+
+지시자는 상태(데이터, 변수)를 화면에 붙일 때 사용함. (바인딩) :
+  {{}} : 변수. 값을 화면에 바인딩
+  v-if : 변수. boolean 타입의 변수를 만들 때 사용
+  v-for : 변수. 배열 타입의 변수를 만들 때 사용 (JS의 for ~ in문과 동일)
+  v-on : 함수. methods에 기술, 축약표현( @ 만 쓰는 경우엔 v-on과 같음.)
+  v-bind : 변수. 축약표현( : )
+  v-model : 변수. 입력 태그(input, textarea, select)
