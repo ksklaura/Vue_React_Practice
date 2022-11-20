@@ -1,16 +1,16 @@
-<style scoped></style>
+<style scoped>
+span {
+  display: inline-block;
+  font-size: 3em;
+  border: 1px dashed blue;
+  padding: 10px 20px;
+  margin: 5px;
+  text-align: center;
+}
+</style>
 
 <template>
-  <span
-    style="
-      display: 'inline-block',
-      fontSize: '3em',
-      border: '1px dashed blue',
-      padding: '10px 20px',
-      margin: '5px',
-      text-align: 'center'
-    "
-  >
+  <span>
     {{ num }}
   </span>
 </template>

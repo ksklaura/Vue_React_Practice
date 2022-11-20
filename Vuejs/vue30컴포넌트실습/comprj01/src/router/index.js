@@ -9,7 +9,7 @@ const routes = [
   },
   {
     path: '/about',
-    name: 'about',
+    name: 'about', // name은 중요하지 않음. 없어도 무방.
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -31,6 +31,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import('../views/Vue3104View.vue'),
+  },
+  {
+    path: '/3403',
+    name: '3403',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import('../views/Vue3403View.vue'),
   },
 ];
 

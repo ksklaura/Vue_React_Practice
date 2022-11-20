@@ -48,6 +48,13 @@ export default {
     /* 이벤트 핸들러 등록 + 일반 함수 */
     clickAddBox(e) {
       console.log(e.target);
+      // this.$data.arr[this.$data.arr.length] = this.$data.arr.length; // 이렇게 하면 안 됨! 불변객체 사용
+
+      // spread 연산자 사용하는 방법:
+      this.$data.arr = [...this.$data.arr, this.$data.arr.length];
+
+      // this.$set은 인스턴스에만 사용하기 때문에 component에서는 사용 불가. 오류가 남!
+      // this.$set(this.$data.arr, this.$data.arr.length, this.$data.arr.length);
     },
   },
   components: {
