@@ -38,3 +38,8 @@ builder의 목적: 컴파일
   1. map, reduce, filter
   2. ... spread, 연산자
   3. 라이브러리: immer, immutable
+
+v-bind  : 화면 <-- 데이터
+v-model : 화면 <--> 데이터 (양방향) (화면에 입력한 값이 데이터에 저장되고 저장된 즉시 화면에 다시 값이 보여짐.)
+
+문자형을 숫자형으로 변환하는 방법: Number()을 씌워줌.
