@@ -118,7 +118,7 @@
       <img v-bind:src="img_but1"
         id="but1"
         v-on:mouseover="imageover"
-        v-on:mouseout="imageout" /> <!-- 변수로 만들지 함수로 만들지 지시자 선정을 해야 함. -->
+        v-on:mouseout="imageout" /> <!-- 변수로 만들지, 함수로 만들지 지시자 설정을(v-on) 해야 함. -->
       <img v-bind:src="img_swap"
         id="img-swap"
         v-on:mouseover="imageover"
@@ -137,20 +137,20 @@
             2. 문자열  yellow           ===> "yellow"
             3. 콤마    ;                ===> ,
         </xmp>
-      <span mouseover="spanmouseover"
-        mousedown="spanmousedown"
-        mouseup="spanmouseup"
-        mouseout="spanmouseout">
+      <span v-on:mouseover="spanmouseover"
+        v-on:mousedown="spanmousedown"
+        v-on:mouseup="spanmouseup"
+        v-on:mouseout="spanmouseout">
       </span>
-      <span mouseover="spanmouseover"
-        mousedown="spanmousedown"
-        mouseup="spanmouseup"
-        mouseout="spanmouseout">
+      <span v-on:mouseover="spanmouseover"
+        v-on:mousedown="spanmousedown"
+        v-on:mouseup="spanmouseup"
+        v-on:mouseout="spanmouseout">
       </span>
-      <span mouseover="spanmouseover"
-        mousedown="spanmousedown"
-        mouseup="spanmouseup"
-        mouseout="spanmouseout">
+      <span v-on:mouseover="spanmouseover"
+        v-on:mousedown="spanmousedown"
+        v-on:mouseup="spanmouseup"
+        v-on:mouseout="spanmouseout">
       </span>
       <hr />
 
@@ -163,7 +163,7 @@
 
         </xmp>
       <select id="sel"
-        change="selectchange">
+        v-on:change="selectchange">
         <option value="../images/strawberry.gif">딸기</option>
         <option value="../images/banana.gif">바나나</option>
         <option value="../images/apple.gif"
@@ -171,7 +171,7 @@
       </select>
 
       <img id="img"
-        src="img_select" />
+        v-bind:src="img_select" />
       <hr />
 
       <xmp>
@@ -205,7 +205,9 @@
 
       img_image3: null,
       img_but1: '../images/but1.gif',
-      img_swap: '../images/img_swap_off.png'
+      img_swap: '../images/img_swap_off.png',
+
+      img_select: null
     },
     //template: ``,
     methods: {
@@ -251,6 +253,38 @@
           this.$data.img_swap = '../images/img_swap_off.png';
         }
       },
+
+      spanmouseover(e) {
+        console.log(e.target);
+        e.target // 그냥 <span> 태그
+        // 우리가 하고 싶은 것 : span style = "background-color: yellow;"
+        e.target.style.backgroundColor = "yellow";
+      },
+
+      spanmousedown(e) {
+        console.log(e.target);
+        e.target.style.backgroundColor = "blue";
+      },
+
+      spanmouseup(e) {
+        console.log(e.target);
+        e.target.style.backgroundColor = "pink";
+      },
+
+      spanmouseout(e) {
+        console.log(e.target);
+        e.target.style.backgroundColor = "red";
+      },
+
+      selectchange(e) {
+        console.log(e.target);
+        console.log(e.target.value); // event.target.value === <option> 태그의 value 속성
+        const value = e.target.value;
+        debugger;
+        this.$data.img_select = value;
+      }
+
+
     },
     components: {
       /* 전역 컴포넌트인 경우는 등록하지 않는다. 전역 컴포넌트는 프로토타입 체인으로 찾을 수 있기 때문에 */
@@ -283,10 +317,16 @@
     img_image3: null,
     img_but1:
     img_swap:
+    img_select: null
 
   함수:
     imageclick
     imageover
     imageout
+    spanmouseover
+    spanmousedown
+    spanmouseup
+    spanmouseout
+    selectchange
 
 -->
