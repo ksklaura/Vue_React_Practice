@@ -1,13 +1,41 @@
-<style scoped></style>
+<style scoped>
+body {
+  text-align: center;
+  background-color: #f6f6f8;
+}
+input {
+  border-style: groove;
+  width: 200px;
+}
+button {
+  border-style: groove;
+}
+.shadow {
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
+}
+</style>
 
 <template>
-  <div>TodoView</div>
+  <div id="app">
+    <!-- TodoHeader -->
+    <TodoHeader></TodoHeader>
+
+    <!-- TodoInput -->
+    <TodoInput v-on:addTodo="addTodo"></TodoInput>
+
+    <!-- TodoList -->
+
+    <!-- TodoFooter -->
+    <TodoFooter v-on:clearAll="clearAll"></TodoFooter>
+  </div>
 </template>
 
 <script>
 // vuex 라이브러리에서 mapActions, mapMutations, mapState, mapGetters 함를 가져옵니다.
 // import { mapActions, mapMutations, mapState, mapGetters } from 'vuex';
-
+import TodoHeader from '../components/todo/TodoHeader.vue';
+import TodoFooter from '../components/todo/TodoFooter.vue';
+import TodoInput from '../components/todo/TodoInput.vue';
 export default {
   /* pdtmc^2w */
   props: [],
@@ -19,6 +47,16 @@ export default {
   //template: ``,
   methods: {
     /* 이벤트 핸들러 등록 + 일반 함수 */
+    clearAll(e) {
+      debugger;
+      console.log(e.target);
+    },
+    addTodo(e, newTodoItem) {
+      // TodoInput.vue로부터 newTodoItem을 받기 위해 매개변수 newTodoItem 추가
+      debugger;
+      console.log(e.target);
+      console.log(newTodoItem);
+    },
     /* vuex 를 사용하는 경우
       mapActions 는 store의 actions 를 가져오는 헬퍼 메서드입니다.
       namespaced: true를 설정한 경우 네임스페이스를 사용하기 때문에 store의 모듈 명을 적어주어야 합니다.
@@ -32,6 +70,9 @@ export default {
   components: {
     /* 전역 컴포넌트인 경우는 등록하지 않는다. 전역 컴포넌트는 프로토타입 체인으로 찾을 수 있기 때문에 */
     /* 지역 컴포넌트나 파일 컴포넌트만 등록 한다. 예시) "태그명" : 컴포넌트명 */
+    TodoHeader: TodoHeader,
+    TodoFooter: TodoFooter,
+    TodoInput: TodoInput,
   },
   computed: {
     /* 자동처리 + 동기식. 메서드로 작성. return 필수. data 와 공존 불가 */
