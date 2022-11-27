@@ -38,8 +38,8 @@ export default {
       "
     */
     ...mapActions('counterStore', {
-      dispatchSet: 'set',
-      dispatchGet: 'get',
+      dispatchSet: 'setCounter',
+      dispatchGet: 'getCounter',
     }),
     /* 이벤트 핸들러 등록 + 일반함수 */
     handlerIncrement(e) {

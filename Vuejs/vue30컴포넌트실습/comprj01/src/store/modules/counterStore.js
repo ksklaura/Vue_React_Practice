@@ -9,14 +9,15 @@ const store = {
      * 첫번째인자: 무조건 mutations로 고정.
      * 두번째인자: 값. store.dispatch()호출시 넘겨지는 값.
      */
-    set(mutations /* 고정 */, payload) {
+    setCounter(mutations /* 고정 */, payload) {
+      // Vue4301Comp.vue의 dispatchSet: 'setCounter'에서 가져온 setCounter
       const { commit } = mutations;
       debugger;
-      commit('set', payload);
+      commit('setCounter', payload);
     },
-    get(mutations /* 고정 */, payload) {
+    getCounter(mutations /* 고정 */, payload) {
       const { commit } = mutations;
-      commit('get', payload);
+      commit('getCounter', payload);
     },
   },
   mutations: {
@@ -25,12 +26,19 @@ const store = {
      * 첫번째인자: 무조건 state 로 고정.
      * 두번째인자: 값. mutations.commit() 호출시 넘겨지는 값.
      * */
-    set(state /* 고정 */, param /* mutations.commit 호출시 넘겨지는 값 */) {
+    setCounter(
+      // const store = {actions: {setCounter}}에서 가져온 setCounter
+      state /* 고정 */,
+      param /* mutations.commit 호출시 넘겨지는 값 */,
+    ) {
       debugger;
       // state.인자 = param;
       state.counter = state.counter + param;
     },
-    get(state /* 고정 */, param /* mutations.commit 호출시 넘겨지는 값 */) {
+    getCounter(
+      state /* 고정 */,
+      param /* mutations.commit 호출시 넘겨지는 값 */,
+    ) {
       // state.인자 = param;
       state.counter = state.counter - param;
     },
