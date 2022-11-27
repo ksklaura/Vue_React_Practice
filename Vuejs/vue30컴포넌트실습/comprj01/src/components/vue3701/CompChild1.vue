@@ -1,0 +1,36 @@
+<style scoped>
+.main {
+  border: 1px solid black;
+  background-color: yellow;
+}
+</style>
+
+<template>
+  <div class="main">
+    {{ msg }}
+    <child11 />
+    {{ msg }}
+  </div>
+</template>
+
+<script>
+// vuex 라이브러리에서 mapActions, mapMutations, mapState, mapGetters 함를 가져옵니다.
+// import { mapActions, mapMutations, mapState, mapGetters } from 'vuex';
+
+import CompChild11 from './CompChild11.vue';
+
+export default {
+  /* pdtmc^2w */
+  props: [],
+  data() {
+    /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
+    /* data 프로퍼티 값 변경시 this.set(object, key, value) 을 사용 */
+    return {
+      msg: 'Child 1',
+    };
+  },
+  components: {
+    child11: CompChild11,
+  },
+};
+</script>
