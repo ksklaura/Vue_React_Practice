@@ -24,6 +24,12 @@ button {
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
 
     <!-- TodoList -->
+    <TodoList
+      v-bind:todoItems="todoItems"
+      v-on:doneToggle="doneToggle"
+      v-on:removeTodo="removeTodo"
+    >
+    </TodoList>
 
     <!-- TodoFooter -->
     <TodoFooter v-on:clearAll="clearAll"></TodoFooter>
@@ -36,13 +42,21 @@ button {
 import TodoHeader from '../components/todo/TodoHeader.vue';
 import TodoFooter from '../components/todo/TodoFooter.vue';
 import TodoInput from '../components/todo/TodoInput.vue';
+import TodoList from '../components/todo/TodoList.vue';
 export default {
   /* pdtmc^2w */
   props: [],
   data() {
     /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
     /* data 프로퍼티 값 변경시 this.set(object, key, value) 을 사용 */
-    return {};
+    return {
+      todoItems: [
+        { id: 1, todo: '영화보기', done: false },
+        { id: 2, todo: '주말 산책', done: true },
+        { id: 3, todo: 'ES6 학습', done: false },
+        { id: 4, todo: '잠실 야구장', done: false },
+      ],
+    };
   },
   //template: ``,
   methods: {
@@ -50,12 +64,34 @@ export default {
     clearAll(e) {
       debugger;
       console.log(e.target);
+      this.$data.todoItems = [];
     },
     addTodo(e, newTodoItem) {
       // TodoInput.vue로부터 newTodoItem을 받기 위해 매개변수 newTodoItem 추가
       debugger;
       console.log(e.target);
       console.log(newTodoItem);
+    },
+    doneToggle(id) {
+      debugger;
+      console.log(id);
+      // 불변객체
+      // ==> 복제 후 재할당 방식으로 처리
+      // ==> 대표적인 방식:
+      // ==> 1. map, filter, reduce
+      // ==> 2. spread 연산자: ...
+      // ==> 3. 라이브러리 방식 (immer 라이브러리, immutable 라이브러리)
+      const newTodos = this.$data.todoItems.map((item /*, index, array */) => {
+        if (item.id === id) {
+          item.done = !item.done;
+        }
+        return item;
+      }); // 복제
+      this.$data.todoItems = newTodos; // 재할당
+    },
+    removeTodo(id) {
+      debugger;
+      console.log(id);
     },
     /* vuex 를 사용하는 경우
       mapActions 는 store의 actions 를 가져오는 헬퍼 메서드입니다.
@@ -73,6 +109,7 @@ export default {
     TodoHeader: TodoHeader,
     TodoFooter: TodoFooter,
     TodoInput: TodoInput,
+    TodoList: TodoList,
   },
   computed: {
     /* 자동처리 + 동기식. 메서드로 작성. return 필수. data 와 공존 불가 */
