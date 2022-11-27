@@ -101,19 +101,16 @@ export default {
   methods: {
     /* 이벤트 핸들러 등록 + 일반 함수 */
     checked(done) {
-      debugger;
       console.log(done);
       if (done === true) return 'checked';
       else return null;
     },
     doneToggle(id) {
-      debugger;
       console.log(id);
       // this.$emit('이벤트명', id);
       this.$emit('doneToggle', id);
     },
     removeTodo(id) {
-      debugger;
       console.log(id);
       // this.$emit('이벤트명', id);
       this.$emit('removeTodo', id);

@@ -92,6 +92,19 @@ export default {
     removeTodo(id) {
       debugger;
       console.log(id);
+      // 불변객체
+      // ==> 복제 후 재할당 방식으로 처리
+      // ==> 대표적인 방식:
+      // ==> 1. map, filter, reduce
+      // ==> 2. spread 연산자: ...
+      // ==> 3. 라이브러리 방식 (immer 라이브러리, immutable 라이브러리)
+      const newTodos = this.$data.todoItems.filter((item) => {
+        if (item.id === id) {
+          return false;
+        }
+        return true;
+      }); // 복제
+      this.$data.todoItems = newTodos; // 재할당
     },
     /* vuex 를 사용하는 경우
       mapActions 는 store의 actions 를 가져오는 헬퍼 메서드입니다.
