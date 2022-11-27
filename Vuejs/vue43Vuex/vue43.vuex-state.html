@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
     <title>Vuex Sample</title>
 
     <!-- CSS import -->
-    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet"
+      href="../css/reset.css">
 
-</head>
+  </head>
 
-<body>
+  <body>
     <xmp>
 
-    "vue40App" 폴더의 vueapp01 프로젝트에 아래 기능을 추가한다. 
+    "vue30컴포넌트실습" 폴더의 comprj01 프로젝트에 아래 기능을 추가한다.
 
 
     ##################################
@@ -121,7 +123,7 @@
             </div>
         </template>
 
-    작업1-2. vue 인스턴스 기능 완성. data 프로퍼티 추가. <== 각자
+    작업1-2. 컴포넌트 기능 완성. data 프로퍼티 추가. <== 각자
         {{header}} 에는  "Vuex 사용 앱" 가 나오게
         {{welcome}} 에는 "HELLO WORLD" 가 나오게
         {{counter}} 에는 0 이 나오게
@@ -136,7 +138,7 @@
             };
           },
 
-    작업1-3. vue 인스턴스에 버튼 기능 완성. <== 각자
+    작업1-3. 버튼 기능 완성. <== 각자
         <button v-on:click="handlerIncrement">더해줘</button>
         <button v-on:click="handlerDecrement">빼줘</button>
 
@@ -164,6 +166,7 @@
         babel.config.js  jsconfig.json  node_modules/  package.json  package-lock.json  public/  README.md  src/  vue.config.js
 
         # modules 디렉토리 생성
+        # 기능 별로 vuex의 상태를 분리하기 위해 modules 폴더 생성
         $ mkdir -p ./src/store/modules
 
     작업2-2. store 파일 생성
@@ -243,7 +246,10 @@
         import router from './router';
         import store from './store';
 
-        createApp(App).use(store).use(router).mount('#app');
+        createApp(App)
+          .use(store)      // 있는지 확인
+          .use(router)
+          .mount('#app');
 
 
 
@@ -254,10 +260,10 @@
     store에서 state을 가져오는 get 기능을 구현 한다. <== 같이
 
     Vuex 헬퍼 메서드들.
-        mapActions(*)
+        mapActions(*)  ==> methods에서 주로 사용
         mapMutations
         mapState
-        mapGetters(*)
+        mapGetters(*)  ==> computed에서 주로 사용
 
     mapActions는 store의 actions를 가져오는 헬퍼 메서드로
     컴포넌트의 methods 에서 사용된다.
@@ -275,7 +281,7 @@
     3-1. store.counterStore.state 작성
         파일명: src/store/modules/counterStore.js
 
-        vue 인스턴스 data 의 welcome과 counter를 vuex store 로 옮기기.
+        컴포넌트 data 의 welcome과 counter를 vuex store 로 옮기기.
         state: {
             /* vue인스턴스나 컴포넌트의 data 프로퍼티에 해당 */
             welcome: 'HELLO WORLD VUEX',
@@ -406,21 +412,28 @@
     </xmp>
 
     <div style="margin: 0 0 0 62px;">
-    <div>
+      <div>
         <p style="color: red; font-style: bold;">
-            6-1. 실행 전에  서버를 실행하세요.
-            <a href="#" onClick="window.open('../../ES2015문법/ap09.서버통신/ap09-03.Node서버실행.html','Node서버실행','width=900,height=650,toolbar=no,menubar=no,scrollbars=no,resizable=yes');return false;" rel="nofollow">Node서버실행</a>
+          6-1. 실행 전에 서버를 실행하세요.
+          <a href="#"
+            onClick="window.open('../../ES2015문법/ap09.서버통신/ap09-03.Node서버실행.html','Node서버실행','width=900,height=650,toolbar=no,menubar=no,scrollbars=no,resizable=yes');return false;"
+            rel="nofollow">Node서버실행</a>
         </p>
         <p>&nbsp;</p>
         <p>
-            2. 브라우저로 서버 실행 여부 확인<br>
-            <a href="http://localhost:5050/counter" target="_blank">http://localhost:5050/counter</a>   ==> 현재값 가져오기<br>
-            <a href="http://localhost:5050/counter?step=1" target="_blank">http://localhost:5050/counter?step=1</a>   ==> 1 씩 증가<br>
-            <a href="http://localhost:5050/counter?step=-1" target="_blank">http://localhost:5050/counter?step=-1</a>   ==> -1 씩 증가<br>
-            <a href="http://localhost:5050/counter?step=10" target="_blank">http://localhost:5050/counter?step=10</a>  ==> 10 씩 증가<br>
-            <a href="http://localhost:5050/counter?step=-10" target="_blank">http://localhost:5050/counter?step=-10</a>  ==> -10 씩 증가<br>
+          2. 브라우저로 서버 실행 여부 확인<br>
+          <a href="http://localhost:5050/counter"
+            target="_blank">http://localhost:5050/counter</a> ==> 현재값 가져오기<br>
+          <a href="http://localhost:5050/counter?step=1"
+            target="_blank">http://localhost:5050/counter?step=1</a> ==> 1 씩 증가<br>
+          <a href="http://localhost:5050/counter?step=-1"
+            target="_blank">http://localhost:5050/counter?step=-1</a> ==> -1 씩 증가<br>
+          <a href="http://localhost:5050/counter?step=10"
+            target="_blank">http://localhost:5050/counter?step=10</a> ==> 10 씩 증가<br>
+          <a href="http://localhost:5050/counter?step=-10"
+            target="_blank">http://localhost:5050/counter?step=-10</a> ==> -10 씩 증가<br>
         </p>
-    </div>
+      </div>
     </div>
 
     <xmp>
@@ -535,6 +548,6 @@
 
 
     </xmp>
-</body>
+  </body>
 
 </html>
