@@ -1,6 +1,11 @@
+"use strict";
+
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
 /*
 
     ES2015의 const 와 let 에 대해서 알아본다.
+
+    **일단 무조건 const를 쓰고 오류나면 let으로 바꿈!!!!!**
 
     var
     1. 읽기 쓰기 변수 선언
@@ -25,4 +30,16 @@
     변수 중복 선언 불가
     변수 이름 충돌 불가
 */
-"use strict";
+
+var msg = 'global scope';
+if (true) {
+  var _msg = 'block scope';
+}
+var outer = function outer(params) {
+  var msg = 'function scope at outer';
+  if (true) {
+    var _msg2 = 'block scope at outer';
+  }
+};
+var pizza = true;
+false, _readOnlyError("pizza"); // 오류 발생
