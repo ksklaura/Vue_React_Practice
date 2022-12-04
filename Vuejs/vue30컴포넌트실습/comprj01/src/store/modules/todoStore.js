@@ -11,13 +11,30 @@ const store = {
      * 첫번째인자: 무조건 mutations로 고정.
      * 두번째인자: 값. store.dispatch()호출시 넘겨지는 값.
      */
-    set(mutations /* 고정 */, payload) {
+    clearAll(mutations /* 고정 */) {
+      debugger;
       const { commit } = mutations;
-      commit('set', payload);
+      commit('clearAll');
     },
-    get(mutations /* 고정 */, payload) {
+    doneToggle(mutations /* 고정 */, id) {
+      debugger;
       const { commit } = mutations;
-      commit('get', payload);
+      commit('doneToggle', id);
+    },
+    removeTodo(mutations /* 고정 */, id) {
+      debugger;
+      const { commit } = mutations;
+      commit('removeTodo', id);
+    },
+    addTodo(mutations /* 고정 */, newTodoItem) {
+      debugger;
+      const { commit } = mutations;
+      commit('addTodo', newTodoItem);
+    },
+    getTodo(mutations /* 고정 */) {
+      debugger;
+      const { commit } = mutations;
+      commit('getTodo');
     },
   },
   mutations: {
@@ -26,11 +43,58 @@ const store = {
      * 첫번째인자: 무조건 state 로 고정.
      * 두번째인자: 값. mutations.commit() 호출시 넘겨지는 값.
      * */
-    set(state /* 고정 */, param /* mutations.commit 호출시 넘겨지는 값 */) {
-      state.인자 = param;
+    clearAll(state /* 고정 */) {
+      /* ...중략. 직접 작성 */
+      state.todoItems = [];
     },
-    get(state /* 고정 */, param /* mutations.commit 호출시 넘겨지는 값 */) {
-      state.인자 = param;
+    doneToggle(state /* 고정 */, id) {
+      /* ...중략. 직접 작성 */
+      const newTodos = state.todoItems.map((item) => {
+        if (item.id === id) {
+          item.done = !item.done;
+        }
+        return item;
+      });
+      state.todoItems = newTodos;
+    },
+    removeTodo(state /* 고정 */, id) {
+      /* ...중략. 직접 작성 */
+      const newTodos = state.todoItems.filter((item) => {
+        if (item.id === id) {
+          return false;
+        }
+        return true;
+      });
+      state.todoItems = newTodos;
+    },
+    addTodo(state /* 고정 */, newTodoItem) {
+      /* ...중략. 직접 작성 */
+
+      // max id 구하기 ==> map과 reduce 를 사용하여
+      // todoItems 추가할 객체 만들기
+      // 배열에 추가
+      let maxid = 0;
+      if (state.todoItems.length > 0) {
+        maxid = state.todoItems
+          .map((item) => item.id)
+          .reduce((pvalue, cvalue) => {
+            if (pvalue > cvalue) return pvalue;
+            else return cvalue;
+          });
+      }
+
+      const newTodo = {
+        id: maxid + 1,
+        todo: newTodoItem,
+        done: false,
+      };
+
+      // state.todoItems 에 newTodo를 추가하시오.
+      // state.todoItems.push(newTodo);
+      state.todoItems = [...state.todoItems, newTodo];
+    },
+    getTodo(state /* 고정 */) {
+      /* ...중략. 직접 작성 */
     },
   },
   state: {
