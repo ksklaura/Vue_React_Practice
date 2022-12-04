@@ -61,3 +61,20 @@ const func = function ({ type }) {
   console.log(type); // t2
 };
 func({ ...car1, ...car2 });
+
+// spread연산자를 이용하여 새로운 객체를 만드는 방법을 실습하기
+// ==> 불변객체의 복제 후 할당
+
+const morning = {
+  breatfast: '미역국',
+  lunch: '삼치구이',
+};
+
+const dinner = '스테이크';
+
+const meals = {
+  ...morning,
+  dinner, // dinner: dinner
+};
+
+console.log(meals); // { breatfast: '미역국', lunch: '삼치구이', dinner: '스테이크' }

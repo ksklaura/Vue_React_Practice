@@ -65,3 +65,17 @@ var func = function func(_ref) {
 };
 
 func(_objectSpread(_objectSpread({}, car1), car2));
+
+// spread연산자를 이용하여 새로운 객체를 만드는 방법을 실습하기
+// ==> 불변객체의 복제 후 할당
+
+var morning = {
+  breatfast: '미역국',
+  lunch: '삼치구이'
+};
+var dinner = '스테이크';
+var meals = _objectSpread(_objectSpread({}, morning), {}, {
+  dinner: dinner // dinner: dinner
+});
+
+console.log(meals); // { breatfast: '미역국', lunch: '삼치구이', dinner: '스테이크' }
