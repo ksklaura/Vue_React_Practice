@@ -58,6 +58,7 @@
 
   const { useState, useEffect, useRef, useCallback, useMemo, useReducer, Fragment } = React;
 
+  // id="app" 인 곳에 컴포넌트를 붙이시오
   ReactDOM.render(<Greeting isLoggedIn={true} />, document.getElementById('app'));
 
   // 단축키 rfc
@@ -68,11 +69,9 @@
     }
     return <GuestGreeting />;
   }
-
   function UserGreeting(props) {
     return <h1>Welcome back!</h1>;
   }
-
   function GuestGreeting(props) {
     return <h1>Please sign up.</h1>;
   }
