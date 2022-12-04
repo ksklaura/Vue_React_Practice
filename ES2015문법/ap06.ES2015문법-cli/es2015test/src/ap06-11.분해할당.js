@@ -46,3 +46,15 @@ console.log(type, color, model, gear); // t S 2021 undefined
 
 const { type: type2, color: color2, model: model2, gear: gear2 } = { type: 't', color: 'S', model: 2021 };
 console.log(type2, color2, model2, gear2); // t S 2021 undefined
+
+const func1 = ({ type, color }) => {
+  console.log(type);
+  console.log(color);
+};
+func1(car);
+
+const func2 = function (car) {
+  const { type, color } = car;
+  console.log(type);
+  console.log(color);
+};

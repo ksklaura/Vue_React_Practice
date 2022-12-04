@@ -39,3 +39,25 @@ console.log(east.concat(west));
 
 const countries = [...east, ...west]; // ... = spread 연산자
 console.log(countries);
+
+// 객체에서의 spread연산자 사용법 익히기
+const car1 = {
+  type: 't1',
+  color: 'S1',
+  model: 2017,
+};
+
+const car2 = {
+  type: 't2',
+  color: 'S2',
+  model: 2019,
+};
+
+const { type } = car1;
+console.log(type); // t1
+
+// {type} = { ...car1, ...car2 }
+const func = function ({ type }) {
+  console.log(type); // t2
+};
+func({ ...car1, ...car2 });

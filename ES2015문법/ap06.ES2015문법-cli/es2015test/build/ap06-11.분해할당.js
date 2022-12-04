@@ -68,3 +68,17 @@ var _type$color$model2 = {
   model2 = _type$color$model2.model,
   gear2 = _type$color$model2.gear;
 console.log(type2, color2, model2, gear2); // t S 2021 undefined
+
+var func1 = function func1(_ref) {
+  var type = _ref.type,
+    color = _ref.color;
+  console.log(type);
+  console.log(color);
+};
+func1(car);
+var func2 = function func2(car) {
+  var type = car.type,
+    color = car.color;
+  console.log(type);
+  console.log(color);
+};
