@@ -12,8 +12,10 @@ import React, {
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { BrowserRouter, Routes, Route, NavLink, useParams, useLocation, useHistory, useNavigate } from 'react-router-dom';
+
 import TodoHeader from './components/TodoHeader';
 import TodoFooter from './components/TodoFooter';
+import TodoList from './components/TodoList';
 
 const StyledTodoContainer = styled.div`
   /* styled 설정. https://styled-components.com/docs/basics#adapting-based-on-props */
@@ -123,52 +125,6 @@ const StyledTodoContainer = styled.div`
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
-
-  ul {
-    list-style-type: none;
-    padding-left: 0px;
-    margin-top: 0;
-    text-align: left;
-  }
-
-  li {
-    display: flex;
-    min-height: 50px;
-    height: 50px;
-    line-height: 50px;
-    margin: 0.5rem 0;
-    padding: 0 0.9rem;
-    background: white;
-    border-radius: 5px;
-  }
-
-  li.checked {
-    background: #bbb;
-    color: #fff;
-    text-decoration: line-through;
-  }
-
-  .checkBtn {
-    line-height: 45px;
-    color: #62acde;
-    margin-right: 5px;
-  }
-
-  .removeBtn {
-    margin-left: auto;
-    color: #de4343;
-  }
-
-  .list-enter-active,
-  .list-leave-active {
-    transition: all 1s;
-  }
-
-  .list-enter,
-  .list-leave-to {
-    opacity: 0;
-    transform: translateY(30px);
-  }
 `;
 
 function TodoContainer({ ...props }) {
@@ -206,12 +162,17 @@ function TodoContainer({ ...props }) {
   );
 
   // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
-  const callback = useCallback(
+  const callbackClearAll = useCallback(
     (param) => {
       // state 변경
+      // debugger;
+
+      // todoItems 를 빈 배열로 만들기
+      setTodoItems([]);
     },
     [
       /* 연관배열: 콜백 메서드에서 변경하고자 하는 연관되는 상태(변수)명들을 기술 */
+      todoItems,
     ],
   );
 
@@ -254,41 +215,10 @@ function TodoContainer({ ...props }) {
         </div>
 
         {/* <!-- TodoList --> */}
-        <section>
-          <ul>
-            <li>
-              <i aria-hidden="true" className="checkBtn fas fa-check"></i>
-              영화보기
-              <span type="button" className="removeBtn">
-                <i aria-hidden="true" className="far fa-trash-alt"></i>
-              </span>
-            </li>
-            <li className="checked">
-              <i aria-hidden="true" className="checkBtn fas fa-check"></i>
-              주말 산책
-              <span type="button" className="removeBtn">
-                <i aria-hidden="true" className="far fa-trash-alt"></i>
-              </span>
-            </li>
-            <li>
-              <i aria-hidden="true" className="checkBtn fas fa-check"></i>
-              ES6 학습
-              <span type="button" className="removeBtn">
-                <i aria-hidden="true" className="far fa-trash-alt"></i>
-              </span>
-            </li>
-            <li>
-              <i aria-hidden="true" className="checkBtn fas fa-check"></i>
-              잠실 야구장
-              <span type="button" className="removeBtn">
-                <i aria-hidden="true" className="far fa-trash-alt"></i>
-              </span>
-            </li>
-          </ul>
-        </section>
+        <TodoList todoItems={todoItems}></TodoList>
 
         {/* <!-- TodoFooter --> */}
-        <TodoFooter></TodoFooter>
+        <TodoFooter callbackClearAll={callbackClearAll}></TodoFooter>
       </div>
     </StyledTodoContainer>
   );
