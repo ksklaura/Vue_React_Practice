@@ -892,6 +892,8 @@
       "",
       "    const { useState, useEffect, useRef, useCallback, useMemo, useReducer, Fragment } = React;",
       "",
+      "   // id=\"app\" 인 태그 에 컴포넌트를 화면에 붙이시오",
+      "   // ReactDOM.render( 인자1, 인자2 )",
       "    ReactDOM.render(<컴포넌트이름 />, document.getElementById('app'));",
       "",
       "   // 단축키 rfc",
