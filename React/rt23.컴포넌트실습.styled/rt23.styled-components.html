@@ -180,13 +180,15 @@
     ##################################
 
     5-1. 컴포넌트 폴더 및 파일 생성
+    $ pwd
     $ ls
-    $ mkdir  -p ./src/containers/styled
+    $ mkdir  -p ./src/containers/styled             # 폴더 만들기
     $ touch ./src/containers/styled/CompStyle.js
 
 
 
     5-2. src/App.js 수정한다.
+    import './App.css';
     import  CompStyle from './src/containers/styled/CompStyle';
 
     function App(){
