@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { BrowserRouter, Routes, Route, NavLink, useParams, useLocation, useHistory, useNavigate } from 'react-router-dom';
 import TodoHeader from './components/TodoHeader';
+import TodoFooter from './components/TodoFooter';
 
 const StyledTodoContainer = styled.div`
   /* styled 설정. https://styled-components.com/docs/basics#adapting-based-on-props */
@@ -168,20 +169,6 @@ const StyledTodoContainer = styled.div`
     opacity: 0;
     transform: translateY(30px);
   }
-
-  .clearAllContainer {
-    width: 16rem;
-    height: 50px;
-    line-height: 50px;
-    background-color: white;
-    border-radius: 5px;
-    margin: 0 auto;
-  }
-
-  .clearAllBtn {
-    color: #e20303;
-    display: block;
-  }
 `;
 
 function TodoContainer({ ...props }) {
@@ -300,10 +287,8 @@ function TodoContainer({ ...props }) {
           </ul>
         </section>
 
-        {/* <!-- TodoHeader --> */}
-        <div className="clearAllContainer">
-          <span className="clearAllBtn">Clear All</span>
-        </div>
+        {/* <!-- TodoFooter --> */}
+        <TodoFooter></TodoFooter>
       </div>
     </StyledTodoContainer>
   );
