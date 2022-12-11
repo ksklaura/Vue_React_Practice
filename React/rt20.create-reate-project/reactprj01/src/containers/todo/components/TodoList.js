@@ -62,7 +62,7 @@ const StyledTodoList = styled.div`
   }
 `;
 
-function TodoList({ todoItems }) {
+function TodoList({ todoItems, callbackDoneToggle, callbackRemoveTodo }) {
   // useState 를 사용한 컴포넌트의 상태값 설정
   const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
   const [state, setState] = useState({ id: 0, name: '', age: 0 }); // 상태값이 참조타입 경우
@@ -106,9 +106,28 @@ function TodoList({ todoItems }) {
   );
 
   // 이벤트 핸들러 작성.
-  const handler = (e) => {
+  const handlerDoneToggle = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
+    debugger;
+    const id = Number(e.target.dataset.id); // Number() : 문자열을 숫자로 변환
+
+    e.stopPropagation(); // click 이벤트 취소. 버블링 막기.
+
+    // 부모 컴포넌트의 콜백 메서드 callbackDoneToggle 호출
+    callbackDoneToggle(id);
+  };
+
+  const handlerRemoveTodo = (e, id) => {
+    // const handlerRemoveTodo = (e, id) 에서 이벤트가 필요하면 e를 넣고, 필요없으면 e 생략 가능함.
+    // 이벤트 핸들러는 화살표 함수로 만든다
+    console.log(e.target);
+    debugger;
+
+    e.stopPropagation(); // click 이벤트 취소. 버블링 막기.
+
+    // 부모 컴포넌트의 콜백 메서드 callbackRemoveTodo 호출
+    callbackRemoveTodo(id);
   };
 
   const lis =
@@ -118,10 +137,18 @@ function TodoList({ todoItems }) {
       const checked = item.done ? 'checked' : null;
 
       return (
-        <li key={item.id} className={checked}>
+        <li key={item.id} className={checked} data-id={item.id} onClick={handlerDoneToggle}>
           <i aria-hidden="true" className="checkBtn fas fa-check"></i>
           {item.todo}
-          <span type="button" className="removeBtn">
+          <span
+            type="button"
+            className="removeBtn"
+            onClick={(e) => {
+              e.stopPropagation(); // 이벤트 취소. 버블링 방지
+              handlerRemoveTodo(e, item.id);
+              return;
+            }}
+          >
             <i aria-hidden="true" className="far fa-trash-alt"></i>
           </span>
         </li>
@@ -143,12 +170,16 @@ TodoList.propTypes = {
   // 인자명: PropTypes.func.isRequired,
   // 인자명: PropTypes.arrayOf(PropTypes.object),
   todoItems: PropTypes.arrayOf(PropTypes.object),
+  callbackDoneToggle: PropTypes.func.isRequired,
+  callbackRemoveTodo: PropTypes.func.isRequired,
 };
 TodoList.defaultProps = {
   // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
   // 인자명: () => {},
   // 인자명: [],
   todoItems: [],
+  callbackDoneToggle: () => {},
+  callbackRemoveTodo: () => {},
 };
 
 export default React.memo(TodoList); // React.memo()는 props 미변경시 컴포넌트 리렌더링 방지 설정
